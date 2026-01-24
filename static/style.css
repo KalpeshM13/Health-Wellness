@@ -781,8 +781,27 @@ body {
     .tools-grid,
     .stories-grid,
     .connect-grid,
-    .parents-grid {
+    .parents-grid,
+    .solution-main,
+    .features-grid {
         grid-template-columns: 1fr;
+    }
+
+    .solution-main {
+        gap: 2rem;
+    }
+
+    .solution-left h3 {
+        font-size: 1.5rem;
+    }
+
+    .platform-mockup {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .features-title {
+        font-size: 2rem;
     }
 
     .hero-image-container {
