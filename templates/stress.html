@@ -1,0 +1,1507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindEase - Stress Relief Solutions</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --cream: #f0f4f8;
+            --sand: #e2e8f0;
+            --sage: #1e3a5f;
+            --sage-dark: #0f2744;
+            --terracotta: #3b82f6;
+            --ocean: #60a5fa;
+            --lavender: #93c5fd;
+            --charcoal: #0f172a;
+            --warm-gray: #64748b;
+            --white: #FFFFFF;
+            --shadow-soft: 0 4px 20px rgba(15, 23, 42, 0.08);
+            --shadow-medium: 0 8px 30px rgba(15, 23, 42, 0.15);
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--cream);
+            color: var(--charcoal);
+            line-height: 1.7;
+        }
+
+        /* Decorative Elements */
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.5;
+            z-index: -1;
+        }
+
+        .blob-1 {
+            width: 400px;
+            height: 400px;
+            background: var(--sage);
+            top: -100px;
+            right: -100px;
+        }
+
+        .blob-2 {
+            width: 300px;
+            height: 300px;
+            background: var(--lavender);
+            bottom: 20%;
+            left: -100px;
+        }
+
+        .blob-3 {
+            width: 350px;
+            height: 350px;
+            background: var(--ocean);
+            top: 50%;
+            right: -150px;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(240, 244, 248, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(44, 62, 80, 0.05);
+        }
+
+        .logo {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--sage-dark);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--warm-gray);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--sage-dark);
+        }
+
+        .nav-cta {
+            padding: 0.6rem 1.5rem;
+            background: var(--sage);
+            color: var(--white);
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .nav-cta:hover {
+            background: var(--sage-dark);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 6rem 5%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 600px;
+            z-index: 1;
+        }
+
+        .hero-tag {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: var(--sand);
+            color: var(--sage-dark);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            color: var(--charcoal);
+        }
+
+        .hero h1 span {
+            color: var(--sage-dark);
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: var(--warm-gray);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            padding: 1rem 2rem;
+            background: var(--sage);
+            color: var(--white);
+            border: none;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .btn-primary:hover {
+            background: var(--sage-dark);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .btn-secondary {
+            padding: 1rem 2rem;
+            background: transparent;
+            color: var(--charcoal);
+            border: 2px solid var(--charcoal);
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .btn-secondary:hover {
+            background: var(--charcoal);
+            color: var(--white);
+        }
+
+        .hero-image {
+            position: absolute;
+            right: 5%;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 45%;
+            max-width: 550px;
+        }
+
+        .hero-illustration {
+            width: 100%;
+            height: 500px;
+            background: var(--sand);
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .floating-elements {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .float-circle {
+            position: absolute;
+            border-radius: 50%;
+            animation: floatUp 6s ease-in-out infinite;
+        }
+
+        .float-circle:nth-child(1) {
+            width: 80px;
+            height: 80px;
+            background: var(--sage);
+            top: 20%;
+            left: 20%;
+            animation-delay: 0s;
+        }
+
+        .float-circle:nth-child(2) {
+            width: 60px;
+            height: 60px;
+            background: var(--ocean);
+            top: 60%;
+            left: 60%;
+            animation-delay: 1s;
+        }
+
+        .float-circle:nth-child(3) {
+            width: 100px;
+            height: 100px;
+            background: var(--lavender);
+            top: 40%;
+            left: 40%;
+            animation-delay: 2s;
+        }
+
+        .float-circle:nth-child(4) {
+            width: 50px;
+            height: 50px;
+            background: var(--terracotta);
+            top: 70%;
+            left: 25%;
+            animation-delay: 3s;
+        }
+
+        @keyframes floatUp {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(10deg); }
+        }
+
+        /* Section Styles */
+        section {
+            padding: 6rem 5%;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 4rem;
+        }
+
+        .section-tag {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            background: var(--sand);
+            color: var(--terracotta);
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--charcoal);
+        }
+
+        .section-desc {
+            color: var(--warm-gray);
+            font-size: 1.05rem;
+        }
+
+        /* Quick Relief Section */
+        .quick-relief {
+            background: var(--white);
+        }
+
+        .relief-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .relief-card {
+            background: var(--cream);
+            border-radius: 24px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+
+        .relief-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-medium);
+            border-color: var(--sage);
+        }
+
+        .relief-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+        }
+
+        .relief-card:nth-child(1) .relief-icon { background: rgba(30, 58, 95, 0.15); }
+        .relief-card:nth-child(2) .relief-icon { background: rgba(59, 130, 246, 0.15); }
+        .relief-card:nth-child(3) .relief-icon { background: rgba(96, 165, 250, 0.15); }
+        .relief-card:nth-child(4) .relief-icon { background: rgba(30, 58, 95, 0.15); }
+        .relief-card:nth-child(5) .relief-icon { background: rgba(59, 130, 246, 0.15); }
+        .relief-card:nth-child(6) .relief-icon { background: rgba(96, 165, 250, 0.15); }
+
+        .relief-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.75rem;
+            color: var(--charcoal);
+        }
+
+        .relief-card p {
+            color: var(--warm-gray);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .relief-time {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            background: var(--sand);
+            border-radius: 12px;
+            font-size: 0.8rem;
+            color: var(--warm-gray);
+        }
+
+        /* Interactive Exercise */
+        .exercise-section {
+            background: linear-gradient(135deg, var(--sage-dark) 0%, var(--sage) 50%, var(--ocean) 100%);
+            border-radius: 40px;
+            margin: 0 5%;
+            padding: 4rem;
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .exercise-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .exercise-info h2 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .exercise-info p {
+            opacity: 0.9;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .exercise-steps {
+            list-style: none;
+        }
+
+        .exercise-steps li {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            font-size: 1.05rem;
+        }
+
+        .step-num {
+            width: 35px;
+            height: 35px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .exercise-visual {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .breath-ball {
+            width: 200px;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 2rem;
+            transition: all 4s ease-in-out;
+            backdrop-filter: blur(10px);
+        }
+
+        .breath-ball.expand {
+            transform: scale(1.4);
+            background: rgba(255, 255, 255, 0.5);
+        }
+
+        .breath-ball.contract {
+            transform: scale(1);
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .breath-text {
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .breath-counter {
+            font-size: 3rem;
+            font-weight: 300;
+            margin-bottom: 1.5rem;
+        }
+
+        .exercise-btn {
+            padding: 1rem 2.5rem;
+            background: var(--white);
+            color: var(--sage);
+            border: none;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .exercise-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Solutions Grid */
+        .solutions-section {
+            background: var(--cream);
+        }
+
+        .solutions-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .solution-card {
+            background: var(--white);
+            border-radius: 24px;
+            padding: 2.5rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(44, 62, 80, 0.05);
+        }
+
+        .solution-card:hover {
+            box-shadow: var(--shadow-medium);
+            transform: translateY(-5px);
+        }
+
+        .solution-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .solution-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+        }
+
+        .solution-card:nth-child(1) .solution-icon { background: rgba(30, 58, 95, 0.15); }
+        .solution-card:nth-child(2) .solution-icon { background: rgba(59, 130, 246, 0.15); }
+        .solution-card:nth-child(3) .solution-icon { background: rgba(96, 165, 250, 0.15); }
+        .solution-card:nth-child(4) .solution-icon { background: rgba(147, 197, 253, 0.2); }
+
+        .solution-card h3 {
+            font-size: 1.3rem;
+            color: var(--charcoal);
+        }
+
+        .solution-card > p {
+            color: var(--warm-gray);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .solution-tips {
+            list-style: none;
+        }
+
+        .solution-tips li {
+            padding: 0.6rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--warm-gray);
+            font-size: 0.95rem;
+        }
+
+        .solution-tips li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 8px;
+            height: 8px;
+            background: var(--sage);
+            border-radius: 50%;
+        }
+
+        /* Self Care Checklist */
+        .checklist-section {
+            background: var(--white);
+        }
+
+        .checklist-container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: var(--cream);
+            border-radius: 30px;
+            padding: 3rem;
+        }
+
+        .checklist-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .checklist-header h3 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .checklist-header p {
+            color: var(--warm-gray);
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 12px;
+            background: var(--sand);
+            border-radius: 6px;
+            margin-bottom: 2rem;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--sage-dark), var(--sage), var(--ocean));
+            border-radius: 6px;
+            transition: width 0.5s ease;
+            width: 0%;
+        }
+
+        .checklist-items {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 1.5rem;
+            background: var(--white);
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .checklist-item:hover {
+            border-color: var(--sage);
+        }
+
+        .checklist-item.checked {
+            background: rgba(30, 58, 95, 0.08);
+            border-color: var(--sage);
+        }
+
+        .check-box {
+            width: 28px;
+            height: 28px;
+            border: 2px solid var(--warm-gray);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .checklist-item.checked .check-box {
+            background: var(--sage);
+            border-color: var(--sage);
+        }
+
+        .check-mark {
+            color: var(--white);
+            font-weight: bold;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .checklist-item.checked .check-mark {
+            opacity: 1;
+        }
+
+        .check-content h4 {
+            font-size: 1rem;
+            color: var(--charcoal);
+            margin-bottom: 0.2rem;
+        }
+
+        .check-content p {
+            font-size: 0.85rem;
+            color: var(--warm-gray);
+        }
+
+        /* Mood Journal */
+        .journal-section {
+            background: var(--sand);
+        }
+
+        .journal-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .mood-selector {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .mood-btn {
+            width: 80px;
+            height: 80px;
+            background: var(--white);
+            border: 3px solid transparent;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.3rem;
+        }
+
+        .mood-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .mood-btn.selected {
+            border-color: var(--sage);
+            background: rgba(30, 58, 95, 0.1);
+        }
+
+        .mood-emoji {
+            font-size: 2rem;
+        }
+
+        .mood-label {
+            font-size: 0.75rem;
+            color: var(--warm-gray);
+        }
+
+        .journal-box {
+            background: var(--white);
+            border-radius: 24px;
+            padding: 2rem;
+        }
+
+        .journal-prompts {
+            display: flex;
+            gap: 0.8rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .prompt-tag {
+            padding: 0.5rem 1rem;
+            background: var(--cream);
+            border: none;
+            border-radius: 20px;
+            color: var(--warm-gray);
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .prompt-tag:hover {
+            background: var(--sage);
+            color: var(--white);
+        }
+
+        .journal-input {
+            width: 100%;
+            height: 150px;
+            border: 2px solid var(--sand);
+            border-radius: 16px;
+            padding: 1.5rem;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1rem;
+            color: var(--charcoal);
+            resize: none;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        .journal-input:focus {
+            border-color: var(--sage);
+        }
+
+        .journal-input::placeholder {
+            color: var(--warm-gray);
+        }
+
+        /* Quick Tips Carousel */
+        .tips-section {
+            background: var(--white);
+            overflow: hidden;
+        }
+
+        .tips-track {
+            display: flex;
+            gap: 2rem;
+            animation: scroll 30s linear infinite;
+        }
+
+        .tip-slide {
+            min-width: 300px;
+            background: var(--cream);
+            border-radius: 20px;
+            padding: 2rem;
+        }
+
+        .tip-number {
+            width: 40px;
+            height: 40px;
+            background: var(--sage);
+            color: var(--white);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .tip-slide h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--charcoal);
+        }
+
+        .tip-slide p {
+            color: var(--warm-gray);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* Help Banner */
+        .help-banner {
+            background: linear-gradient(90deg, var(--sage), var(--ocean));
+            color: var(--white);
+            padding: 1.2rem 5%;
+            text-align: center;
+        }
+
+        .help-banner a {
+            color: var(--white);
+            font-weight: 700;
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--charcoal);
+            color: var(--white);
+            padding: 4rem 5% 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto 3rem;
+        }
+
+        .footer-brand h3 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--sage);
+        }
+
+        .footer-brand p {
+            opacity: 0.7;
+            line-height: 1.7;
+        }
+
+        .footer-links h4 {
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            color: var(--sage);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: var(--white);
+            opacity: 0.7;
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            opacity: 0.6;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero-image {
+                display: none;
+            }
+
+            .hero-content {
+                max-width: 100%;
+                text-align: center;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .relief-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .exercise-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .solutions-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .relief-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .exercise-section {
+                margin: 0 2%;
+                padding: 2rem;
+                border-radius: 24px;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Decorative Blobs -->
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">MindEase</div>
+        <ul class="nav-links">
+            <li><a href="/templates/index.html">Home</a></li>
+            <li><a href="#relief">Quick Relief</a></li>
+            <li><a href="#exercise">Breathing</a></li>
+            <li><a href="#solutions">Solutions</a></li>
+            <li><a href="#checklist">Self-Care</a></li>
+            <li><a href="#journal">Journal</a></li>
+        </ul>
+        <a href="#exercise" class="nav-cta">Start Now</a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <span class="hero-tag">Your Mental Wellness Partner</span>
+            <h1>Take Control of Your <span>Stress</span> Today</h1>
+            <p>Discover science-backed techniques to calm your mind, release tension, and build lasting resilience. Start your journey to a more peaceful life.</p>
+            <div class="hero-buttons">
+                <a href="#exercise" class="btn-primary">Try Breathing Exercise</a>
+                <a href="#solutions" class="btn-secondary">Explore Solutions</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <div class="hero-illustration">
+                <div class="floating-elements">
+                    <div class="float-circle"></div>
+                    <div class="float-circle"></div>
+                    <div class="float-circle"></div>
+                    <div class="float-circle"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Relief Section -->
+    <section id="relief" class="quick-relief">
+        <div class="section-header">
+            <span class="section-tag">Instant Help</span>
+            <h2 class="section-title">Quick Relief Techniques</h2>
+            <p class="section-desc">Feeling stressed right now? These quick techniques can help you feel better in minutes.</p>
+        </div>
+
+        <div class="relief-grid">
+            <div class="relief-card">
+                <div class="relief-icon">🫁</div>
+                <h3>Box Breathing</h3>
+                <p>Navy SEAL technique to instantly calm your nervous system</p>
+                <span class="relief-time">4 minutes</span>
+            </div>
+
+            <div class="relief-card">
+                <div class="relief-icon">💧</div>
+                <h3>Cold Water Splash</h3>
+                <p>Activate your dive reflex to slow heart rate instantly</p>
+                <span class="relief-time">30 seconds</span>
+            </div>
+
+            <div class="relief-card">
+                <div class="relief-icon">👃</div>
+                <h3>Aromatherapy Reset</h3>
+                <p>Use lavender or peppermint scent to shift your mood</p>
+                <span class="relief-time">2 minutes</span>
+            </div>
+
+            <div class="relief-card">
+                <div class="relief-icon">🎯</div>
+                <h3>5-4-3-2-1 Grounding</h3>
+                <p>Engage your senses to anchor yourself in the present</p>
+                <span class="relief-time">3 minutes</span>
+            </div>
+
+            <div class="relief-card">
+                <div class="relief-icon">🤲</div>
+                <h3>Palm Pressure Points</h3>
+                <p>Press acupressure points to release tension quickly</p>
+                <span class="relief-time">2 minutes</span>
+            </div>
+
+            <div class="relief-card">
+                <div class="relief-icon">🎵</div>
+                <h3>Humming Technique</h3>
+                <p>Stimulate your vagus nerve through vocal vibrations</p>
+                <span class="relief-time">3 minutes</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Breathing Exercise -->
+    <section id="exercise" class="exercise-section">
+        <div class="exercise-content">
+            <div class="exercise-info">
+                <h2>Guided Box Breathing</h2>
+                <p>This technique is used by Navy SEALs, first responders, and athletes to stay calm under pressure. It helps regulate your autonomic nervous system.</p>
+                <ul class="exercise-steps">
+                    <li><span class="step-num">1</span> Breathe in slowly for 4 seconds</li>
+                    <li><span class="step-num">2</span> Hold your breath for 4 seconds</li>
+                    <li><span class="step-num">3</span> Exhale slowly for 4 seconds</li>
+                    <li><span class="step-num">4</span> Hold empty for 4 seconds</li>
+                </ul>
+            </div>
+            <div class="exercise-visual">
+                <div class="breath-ball" id="breathBall">
+                    <span class="breath-text" id="breathText">Ready</span>
+                </div>
+                <div class="breath-counter" id="breathCounter">4</div>
+                <button class="exercise-btn" id="exerciseBtn" onclick="toggleExercise()">Start Breathing</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solutions Section -->
+    <section id="solutions" class="solutions-section">
+        <div class="section-header">
+            <span class="section-tag">Long-term Relief</span>
+            <h2 class="section-title">Stress Management Solutions</h2>
+            <p class="section-desc">Build lasting resilience with these proven approaches to managing stress.</p>
+        </div>
+
+        <div class="solutions-grid">
+            <div class="solution-card">
+                <div class="solution-header">
+                    <div class="solution-icon">🧠</div>
+                    <h3>Cognitive Reframing</h3>
+                </div>
+                <p>Change how you think about stressors to reduce their impact on your wellbeing.</p>
+                <ul class="solution-tips">
+                    <li>Challenge negative automatic thoughts</li>
+                    <li>Ask "What would I tell a friend?"</li>
+                    <li>Look for evidence against your fears</li>
+                    <li>Practice the ABCDE technique</li>
+                </ul>
+            </div>
+
+            <div class="solution-card">
+                <div class="solution-header">
+                    <div class="solution-icon">🏋️</div>
+                    <h3>Physical Release</h3>
+                </div>
+                <p>Use movement to release stress hormones and boost feel-good endorphins.</p>
+                <ul class="solution-tips">
+                    <li>20-minute brisk walking daily</li>
+                    <li>Progressive muscle relaxation</li>
+                    <li>Shake it out - literally shake your body</li>
+                    <li>Stretch tight shoulders and neck</li>
+                </ul>
+            </div>
+
+            <div class="solution-card">
+                <div class="solution-header">
+                    <div class="solution-icon">🌙</div>
+                    <h3>Sleep Optimization</h3>
+                </div>
+                <p>Quality sleep is your foundation for stress resilience and emotional regulation.</p>
+                <ul class="solution-tips">
+                    <li>Keep consistent sleep/wake times</li>
+                    <li>Create a wind-down routine</li>
+                    <li>Keep bedroom cool (65-68°F)</li>
+                    <li>No screens 1 hour before bed</li>
+                </ul>
+            </div>
+
+            <div class="solution-card">
+                <div class="solution-header">
+                    <div class="solution-icon">🤝</div>
+                    <h3>Social Connection</h3>
+                </div>
+                <p>Human connection releases oxytocin and provides emotional support.</p>
+                <ul class="solution-tips">
+                    <li>Schedule regular check-ins with friends</li>
+                    <li>Join a group or community</li>
+                    <li>Practice active listening</li>
+                    <li>Don't isolate when stressed</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Self-Care Checklist -->
+    <section id="checklist" class="checklist-section">
+        <div class="section-header">
+            <span class="section-tag">Daily Practice</span>
+            <h2 class="section-title">Self-Care Checklist</h2>
+            <p class="section-desc">Track your daily wellness habits. Small actions add up to big changes.</p>
+        </div>
+
+        <div class="checklist-container">
+            <div class="checklist-header">
+                <h3>Today's Progress</h3>
+                <p>Check off what you've done today</p>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <div class="checklist-items">
+                <div class="checklist-item" onclick="toggleCheck(this)">
+                    <div class="check-box"><span class="check-mark">✓</span></div>
+                    <div class="check-content">
+                        <h4>Drink 8 glasses of water</h4>
+                        <p>Hydration affects mood and energy</p>
+                    </div>
+                </div>
+                <div class="checklist-item" onclick="toggleCheck(this)">
+                    <div class="check-box"><span class="check-mark">✓</span></div>
+                    <div class="check-content">
+                        <h4>Take a 10-minute walk</h4>
+                        <p>Movement reduces stress hormones</p>
+                    </div>
+                </div>
+                <div class="checklist-item" onclick="toggleCheck(this)">
+                    <div class="check-box"><span class="check-mark">✓</span></div>
+                    <div class="check-content">
+                        <h4>Practice deep breathing</h4>
+                        <p>Even 2 minutes makes a difference</p>
+                    </div>
+                </div>
+                <div class="checklist-item" onclick="toggleCheck(this)">
+                    <div class="check-box"><span class="check-mark">✓</span></div>
+                    <div class="check-content">
+                        <h4>Connect with someone</h4>
+                        <p>A quick chat or text counts</p>
+                    </div>
+                </div>
+                <div class="checklist-item" onclick="toggleCheck(this)">
+                    <div class="check-box"><span class="check-mark">✓</span></div>
+                    <div class="check-content">
+                        <h4>Take a screen break</h4>
+                        <p>Step away from devices for 15 min</p>
+                    </div>
+                </div>
+                <div class="checklist-item" onclick="toggleCheck(this)">
+                    <div class="check-box"><span class="check-mark">✓</span></div>
+                    <div class="check-content">
+                        <h4>Write 3 things you're grateful for</h4>
+                        <p>Gratitude rewires your brain</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mood Journal -->
+    <section id="journal" class="journal-section">
+        <div class="section-header">
+            <span class="section-tag">Reflect</span>
+            <h2 class="section-title">Mood Journal</h2>
+            <p class="section-desc">Check in with yourself. Writing helps process emotions.</p>
+        </div>
+
+        <div class="journal-container">
+            <div class="mood-selector">
+                <button class="mood-btn" onclick="selectMood(this, 'Great')">
+                    <span class="mood-emoji">😊</span>
+                    <span class="mood-label">Great</span>
+                </button>
+                <button class="mood-btn" onclick="selectMood(this, 'Good')">
+                    <span class="mood-emoji">🙂</span>
+                    <span class="mood-label">Good</span>
+                </button>
+                <button class="mood-btn" onclick="selectMood(this, 'Okay')">
+                    <span class="mood-emoji">😐</span>
+                    <span class="mood-label">Okay</span>
+                </button>
+                <button class="mood-btn" onclick="selectMood(this, 'Low')">
+                    <span class="mood-emoji">😔</span>
+                    <span class="mood-label">Low</span>
+                </button>
+                <button class="mood-btn" onclick="selectMood(this, 'Stressed')">
+                    <span class="mood-emoji">😣</span>
+                    <span class="mood-label">Stressed</span>
+                </button>
+            </div>
+
+            <div class="journal-box">
+                <div class="journal-prompts">
+                    <button class="prompt-tag" onclick="setPrompt('What\'s on my mind right now?')">What's on my mind</button>
+                    <button class="prompt-tag" onclick="setPrompt('Three things I\'m grateful for today:')">Gratitude</button>
+                    <button class="prompt-tag" onclick="setPrompt('What would help me feel better?')">What I need</button>
+                    <button class="prompt-tag" onclick="setPrompt('One small win from today:')">Today's win</button>
+                </div>
+                <textarea class="journal-input" id="journalInput" placeholder="Start writing... Your thoughts are private and stay in your browser."></textarea>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Tips Carousel -->
+    <section class="tips-section">
+        <div class="section-header">
+            <span class="section-tag">Quick Tips</span>
+            <h2 class="section-title">Instant Calm Ideas</h2>
+        </div>
+
+        <div class="tips-track">
+            <div class="tip-slide">
+                <div class="tip-number">1</div>
+                <h4>Chew Gum</h4>
+                <p>Chewing reduces cortisol by up to 16%. Keep gum handy for stressful moments.</p>
+            </div>
+            <div class="tip-slide">
+                <div class="tip-number">2</div>
+                <h4>Look at Nature</h4>
+                <p>Even photos of nature reduce stress. Set a nature wallpaper on your phone.</p>
+            </div>
+            <div class="tip-slide">
+                <div class="tip-number">3</div>
+                <h4>Squeeze a Stress Ball</h4>
+                <p>Progressive tension and release helps your muscles let go of stress.</p>
+            </div>
+            <div class="tip-slide">
+                <div class="tip-number">4</div>
+                <h4>Splash Cold Water</h4>
+                <p>Cold water on wrists and face activates your calming response.</p>
+            </div>
+            <div class="tip-slide">
+                <div class="tip-number">5</div>
+                <h4>Smell Citrus</h4>
+                <p>Lemon or orange scent boosts serotonin and reduces anxiety.</p>
+            </div>
+            <div class="tip-slide">
+                <div class="tip-number">6</div>
+                <h4>Pet an Animal</h4>
+                <p>Just 10 minutes with a pet significantly lowers stress hormones.</p>
+            </div>
+            <div class="tip-slide">
+                <div class="tip-number">7</div>
+                <h4>Listen to Music</h4>
+                <p>Slow tempo music (60 BPM) syncs with your heart to calm you down.</p>
+            </div>
+            <div class="tip-slide">
+                <div class="tip-number">8</div>
+                <h4>Laugh Out Loud</h4>
+                <p>Watch something funny. Laughter releases endorphins instantly.</p>
+            </div>
+            <!-- Duplicate for seamless loop -->
+            <div class="tip-slide">
+                <div class="tip-number">1</div>
+                <h4>Chew Gum</h4>
+                <p>Chewing reduces cortisol by up to 16%. Keep gum handy for stressful moments.</p>
+            </div>
+            <div class="tip-slide">
+                <div class="tip-number">2</div>
+                <h4>Look at Nature</h4>
+                <p>Even photos of nature reduce stress. Set a nature wallpaper on your phone.</p>
+            </div>
+            <div class="tip-slide">
+                <div class="tip-number">3</div>
+                <h4>Squeeze a Stress Ball</h4>
+                <p>Progressive tension and release helps your muscles let go of stress.</p>
+            </div>
+            <div class="tip-slide">
+                <div class="tip-number">4</div>
+                <h4>Splash Cold Water</h4>
+                <p>Cold water on wrists and face activates your calming response.</p>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>MindEase</h3>
+                <p>Your companion for stress relief and mental wellness. Remember, taking care of your mental health is not a luxury—it's a necessity.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#relief">Quick Relief</a></li>
+                    <li><a href="#exercise">Breathing</a></li>
+                    <li><a href="#solutions">Solutions</a></li>
+                    <li><a href="#checklist">Self-Care</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="#">Find a Therapist</a></li>
+                    <li><a href="#">Support Groups</a></li>
+                    <li><a href="#">Crisis Help</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Connect</h4>
+                <ul>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Newsletter</a></li>
+                    <li><a href="#">Feedback</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 MindEase. Made with care for your wellbeing.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Breathing Exercise
+        let isExercising = false;
+        let exerciseInterval;
+        let exerciseTimeout;
+        let phase = 0;
+        let counter = 4;
+
+        const phases = ['Breathe In', 'Hold', 'Breathe Out', 'Hold'];
+
+        function toggleExercise() {
+            if (isExercising) {
+                stopExercise();
+            } else {
+                startExercise();
+            }
+        }
+
+        function startExercise() {
+            isExercising = true;
+            document.getElementById('exerciseBtn').textContent = 'Stop';
+            phase = 0;
+            runPhase();
+        }
+
+        function stopExercise() {
+            isExercising = false;
+            clearInterval(exerciseInterval);
+            clearTimeout(exerciseTimeout);
+            document.getElementById('exerciseBtn').textContent = 'Start Breathing';
+            document.getElementById('breathText').textContent = 'Ready';
+            document.getElementById('breathCounter').textContent = '4';
+            document.getElementById('breathBall').className = 'breath-ball';
+        }
+
+        function runPhase() {
+            const ball = document.getElementById('breathBall');
+            const text = document.getElementById('breathText');
+            const counterEl = document.getElementById('breathCounter');
+
+            text.textContent = phases[phase];
+            counter = 4;
+            counterEl.textContent = counter;
+
+            // Visual effect
+            if (phase === 0) {
+                ball.className = 'breath-ball expand';
+            } else if (phase === 2) {
+                ball.className = 'breath-ball contract';
+            }
+
+            exerciseInterval = setInterval(() => {
+                counter--;
+                counterEl.textContent = counter;
+
+                if (counter <= 0) {
+                    clearInterval(exerciseInterval);
+                    phase = (phase + 1) % 4;
+                    if (isExercising) {
+                        runPhase();
+                    }
+                }
+            }, 1000);
+        }
+
+        // Checklist
+        function toggleCheck(element) {
+            element.classList.toggle('checked');
+            updateProgress();
+        }
+
+        function updateProgress() {
+            const total = document.querySelectorAll('.checklist-item').length;
+            const checked = document.querySelectorAll('.checklist-item.checked').length;
+            const percentage = (checked / total) * 100;
+            document.getElementById('progressFill').style.width = percentage + '%';
+        }
+
+        // Mood Selector
+        function selectMood(element, mood) {
+            document.querySelectorAll('.mood-btn').forEach(btn => btn.classList.remove('selected'));
+            element.classList.add('selected');
+        }
+
+        // Journal Prompts
+        function setPrompt(prompt) {
+            const input = document.getElementById('journalInput');
+            input.placeholder = prompt;
+            input.focus();
+        }
+
+        // Save journal
+        document.getElementById('journalInput').addEventListener('input', function() {
+            localStorage.setItem('mindEaseJournal', this.value);
+        });
+
+        // Load saved journal
+        window.addEventListener('load', function() {
+            const saved = localStorage.getItem('mindEaseJournal');
+            if (saved) {
+                document.getElementById('journalInput').value = saved;
+            }
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

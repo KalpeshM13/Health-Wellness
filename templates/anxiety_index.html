@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anxiety Solutions - Find Your Path to Calm</title>
+    <link rel="stylesheet" href="/static/anxiety_styles.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo">Anxiety Solutions</div>
+                <ul class="nav-links">
+                    <li><a href="/templates/index.html">Home</a></li>
+                    <li><a href="#solutions">Solutions</a></li>
+                    <li><a href="#techniques">Techniques</a></li>
+                    <li><a href="#resources">Resources</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>Your Journey to Peace Begins Here</h1>
+                    <p class="hero-subtitle">Discover effective solutions and techniques to manage anxiety and reclaim your calm</p>
+                    <a href="#solutions" class="cta-button">Explore Solutions</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="solutions" class="solutions">
+            <div class="container">
+                <h2 class="section-title">Proven Solutions for Anxiety</h2>
+                <div class="solutions-grid">
+                    <div class="solution-card">
+                        <div class="card-icon">🧘</div>
+                        <h3>Mindfulness & Meditation</h3>
+                        <p>Practice mindfulness techniques and meditation to calm your mind and reduce anxiety symptoms. Regular practice can help you stay present and manage stress effectively.</p>
+                        <ul class="solution-list">
+                            <li>Guided meditation sessions</li>
+                            <li>Breathing exercises</li>
+                            <li>Body scan techniques</li>
+                        </ul>
+                    </div>
+
+                    <div class="solution-card">
+                        <div class="card-icon">💪</div>
+                        <h3>Physical Activity</h3>
+                        <p>Regular exercise releases endorphins and helps reduce anxiety. Even a 10-minute walk can make a significant difference in your mood and energy levels.</p>
+                        <ul class="solution-list">
+                            <li>Daily walking routine</li>
+                            <li>Yoga and stretching</li>
+                            <li>Aerobic exercises</li>
+                        </ul>
+                    </div>
+
+                    <div class="solution-card">
+                        <div class="card-icon">💤</div>
+                        <h3>Sleep Hygiene</h3>
+                        <p>Quality sleep is essential for managing anxiety. Establish a consistent sleep schedule and create a relaxing bedtime routine.</p>
+                        <ul class="solution-list">
+                            <li>Consistent sleep schedule</li>
+                            <li>Relaxing bedtime routine</li>
+                            <li>Sleep-friendly environment</li>
+                        </ul>
+                    </div>
+
+                    <div class="solution-card">
+                        <div class="card-icon">📝</div>
+                        <h3>Journaling</h3>
+                        <p>Writing down your thoughts and feelings can help you process emotions and identify anxiety triggers. It's a powerful tool for self-reflection.</p>
+                        <ul class="solution-list">
+                            <li>Daily thought journaling</li>
+                            <li>Gratitude practice</li>
+                            <li>Anxiety trigger tracking</li>
+                        </ul>
+                    </div>
+
+                    <div class="solution-card">
+                        <div class="card-icon">👥</div>
+                        <h3>Social Support</h3>
+                        <p>Connecting with others who understand can provide comfort and reduce feelings of isolation. Don't hesitate to reach out to friends, family, or support groups.</p>
+                        <ul class="solution-list">
+                            <li>Talk to trusted friends</li>
+                            <li>Join support groups</li>
+                            <li>Professional counseling</li>
+                        </ul>
+                    </div>
+
+                    <div class="solution-card">
+                        <div class="card-icon">🍎</div>
+                        <h3>Healthy Nutrition</h3>
+                        <p>A balanced diet can positively impact your mental health. Avoid excessive caffeine and sugar, and focus on whole foods that nourish your body and mind.</p>
+                        <ul class="solution-list">
+                            <li>Balanced meals</li>
+                            <li>Limit caffeine intake</li>
+                            <li>Stay hydrated</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="techniques" class="techniques">
+            <div class="container">
+                <h2 class="section-title">Quick Anxiety Relief Techniques</h2>
+                <div class="techniques-content">
+                    <div class="technique-item">
+                        <h3>4-7-8 Breathing Technique</h3>
+                        <div class="breathing-exercise">
+                            <div class="breath-step">
+                                <span class="step-number">1</span>
+                                <p>Inhale through your nose for <strong>4 seconds</strong></p>
+                            </div>
+                            <div class="breath-step">
+                                <span class="step-number">2</span>
+                                <p>Hold your breath for <strong>7 seconds</strong></p>
+                            </div>
+                            <div class="breath-step">
+                                <span class="step-number">3</span>
+                                <p>Exhale through your mouth for <strong>8 seconds</strong></p>
+                            </div>
+                        </div>
+                        <button class="breathing-button" onclick="startBreathing()">Start Breathing Exercise</button>
+                        <div id="breathing-timer" class="breathing-timer hidden"></div>
+                    </div>
+
+                    <div class="technique-item">
+                        <h3>5-4-3-2-1 Grounding Technique</h3>
+                        <p>When feeling overwhelmed, use this technique to ground yourself in the present moment:</p>
+                        <ol class="grounding-list">
+                            <li><strong>5 things</strong> you can see around you</li>
+                            <li><strong>4 things</strong> you can touch</li>
+                            <li><strong>3 things</strong> you can hear</li>
+                            <li><strong>2 things</strong> you can smell</li>
+                            <li><strong>1 thing</strong> you can taste</li>
+                        </ol>
+                    </div>
+
+                    <div class="technique-item">
+                        <h3>Progressive Muscle Relaxation</h3>
+                        <p>Tense and release different muscle groups to reduce physical tension:</p>
+                        <ul class="relaxation-list">
+                            <li>Start with your toes, tense for 5 seconds, then release</li>
+                            <li>Move up through your legs, abdomen, arms, and face</li>
+                            <li>Focus on the feeling of relaxation after each release</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="resources" class="resources">
+            <div class="container">
+                <h2 class="section-title">Additional Resources</h2>
+                <div class="resources-grid">
+                    <div class="resource-card">
+                        <h3>Professional Help</h3>
+                        <p>If anxiety is significantly impacting your daily life, consider seeking professional help from:</p>
+                        <ul>
+                            <li>Licensed therapists</li>
+                            <li>Psychiatrists</li>
+                            <li>Counselors</li>
+                            <li>Support groups</li>
+                        </ul>
+                    </div>
+
+                    <div class="resource-card">
+                        <h3>Emergency Resources</h3>
+                        <p>If you're in crisis or having thoughts of self-harm:</p>
+                        <ul>
+                            <li><strong>National Suicide Prevention Lifeline:</strong> 988</li>
+                            <li><strong>Crisis Text Line:</strong> Text HOME to 741741</li>
+                            <li><strong>Emergency Services:</strong> 911</li>
+                        </ul>
+                    </div>
+
+                    <div class="resource-card">
+                        <h3>Self-Help Tools</h3>
+                        <p>Explore these helpful resources:</p>
+                        <ul>
+                            <li>Meditation apps (Headspace, Calm)</li>
+                            <li>Anxiety tracking journals</li>
+                            <li>Online therapy platforms</li>
+                            <li>Educational websites and books</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Anxiety Solutions. This website provides informational content only and is not a substitute for professional medical advice.</p>
+            <p class="disclaimer">If you're experiencing severe anxiety or mental health concerns, please consult with a qualified healthcare professional.</p>
+        </div>
+    </footer>
+
+    <script src="/static/anxiety_script.js"></script>
+</body>
+</html>
