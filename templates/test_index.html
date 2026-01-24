@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Assessment - 3 Phase Analysis</title>
+    <link rel="stylesheet" href="/staticc/text_styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Health Assessment System</h1>
+            <p class="subtitle">Complete 3 phases to get your personalized health analysis</p>
+        </header>
+
+        <!-- Progress Bar -->
+        <div class="progress-container">
+            <div class="progress-bar" id="progressBar"></div>
+            <div class="progress-text" id="progressText">Phase 1 of 3</div>
+        </div>
+
+        <!-- Phase 1: Physical Health -->
+        <div class="phase" id="phase1">
+            <h2>Phase 1: Physical Health</h2>
+            <div class="questions-container">
+                <div class="question-card" data-phase="1" data-question="1">
+                    <h3>1. How would you rate your overall energy levels throughout the day?</h3>
+                    <div class="options">
+                        <label><input type="radio" name="q1" value="5"> Excellent - High energy all day</input></label>
+                        <label><input type="radio" name="q1" value="4"> Good - Mostly energetic</input></label>
+                        <label><input type="radio" name="q1" value="3"> Moderate - Energy fluctuates</input></label>
+                        <label><input type="radio" name="q1" value="2"> Low - Often feel tired</input></label>
+                        <label><input type="radio" name="q1" value="1"> Very Low - Constantly exhausted</input></label>
+                    </div>
+                </div>
+
+                <div class="question-card" data-phase="1" data-question="2">
+                    <h3>2. How many hours of quality sleep do you get per night on average?</h3>
+                    <div class="options">
+                        <label><input type="radio" name="q2" value="5"> 8+ hours consistently</input></label>
+                        <label><input type="radio" name="q2" value="4"> 7-8 hours most nights</input></label>
+                        <label><input type="radio" name="q2" value="3"> 6-7 hours</input></label>
+                        <label><input type="radio" name="q2" value="2"> 5-6 hours</input></label>
+                        <label><input type="radio" name="q2" value="1"> Less than 5 hours</input></label>
+                    </div>
+                </div>
+
+                <div class="question-card" data-phase="1" data-question="3">
+                    <h3>3. How often do you experience physical pain or discomfort?</h3>
+                    <div class="options">
+                        <label><input type="radio" name="q3" value="5"> Rarely or never</input></label>
+                        <label><input type="radio" name="q3" value="4"> Occasionally (once a week)</input></label>
+                        <label><input type="radio" name="q3" value="3"> Sometimes (2-3 times a week)</input></label>
+                        <label><input type="radio" name="q3" value="2"> Often (daily)</input></label>
+                        <label><input type="radio" name="q3" value="1"> Constantly</input></label>
+                    </div>
+                </div>
+
+                <div class="question-card" data-phase="1" data-question="4">
+                    <h3>4. How would you describe your appetite and eating patterns?</h3>
+                    <div class="options">
+                        <label><input type="radio" name="q4" value="5"> Excellent - Regular, balanced meals</input></label>
+                        <label><input type="radio" name="q4" value="4"> Good - Mostly regular</input></label>
+                        <label><input type="radio" name="q4" value="3"> Moderate - Sometimes irregular</input></label>
+                        <label><input type="radio" name="q4" value="2"> Poor - Often skip meals</input></label>
+                        <label><input type="radio" name="q4" value="1"> Very Poor - Unpredictable eating</input></label>
+                    </div>
+                </div>
+
+                <div class="question-card" data-phase="1" data-question="5">
+                    <h3>5. How often do you engage in physical exercise or activity?</h3>
+                    <div class="options">
+                        <label><input type="radio" name="q5" value="5"> Daily or 5-6 times per week</input></label>
+                        <label><input type="radio" name="q5" value="4"> 3-4 times per week</input></label>
+                        <label><input type="radio" name="q5" value="3"> 1-2 times per week</input></label>
+                        <label><input type="radio" name="q5" value="2"> Rarely (few times a month)</input></label>
+                        <label><input type="radio" name="q5" value="1"> Never or almost never</input></label>
+                    </div>
+                </div>
+
+                <div class="question-card" data-phase="1" data-question="6">
+                    <h3>6. How would you rate your immune system strength (frequency of getting sick)?</h3>
+                    <div class="options">
+                        <label><input type="radio" name="q6" value="5"> Very Strong - Rarely get sick</input></label>
+                        <label><input type="radio" name="q6" value="4"> Strong - Get sick occasionally</input></label>
+                        <label><input type="radio" name="q6" value="3"> Moderate - Get sick a few times a year</input></label>
+                        <label><input type="radio" name="q6" value="2"> Weak - Get sick frequently</input></label>
+                        <label><input type="radio" name="q6" value="1"> Very Weak - Constantly unwell</input></label>
+                    </div>
+                </div>
+            </div>
+            <button class="next-btn" onclick="nextPhase(1)">Next: Phase 2</button>
+        </div>
+
+        <!-- Phase 2: Mental Health -->
+        <div class="phase hidden" id="phase2">
+            <h2>Phase 2: Mental Health</h2>
+            <div class="questions-container">
+                <div class="question-card" data-phase="2" data-question="1">
+                    <h3>1. How would you rate your overall mood and emotional well-being?</h3>
+                    <div class="options">
+                        <label><input type="radio" name="q7" value="5"> Excellent - Consistently positive</input></label>
+                        <label><input type="radio" name="q7" value="4"> Good - Mostly positive</input></label>
+                        <label><input type="radio" name="q7" value="3"> Moderate - Mixed emotions</input></label>
+                        <label><input type="radio" name="q7" value="2"> Poor - Often negative</input></label>
+                        <label><input type="radio" name="q7" value="1"> Very Poor - Consistently negative</input></label>
+                    </div>
+                </div>
+
+                <div class="question-card" data-phase="2" data-question="2">
+                    <h3>2. How well do you handle stress and pressure?</h3>
+                    <div class="options">
+                        <label><input type="radio" name="q8" value="5"> Very Well - Manage stress effectively</input></label>
+                        <label><input type="radio" name="q8" value="4"> Well - Usually handle it well</input></label>
+                        <label><input type="radio" name="q8" value="3"> Moderately - Sometimes struggle</input></label>
+                        <label><input type="radio" name="q8" value="2"> Poorly - Often overwhelmed</input></label>
+                        <label><input type="radio" name="q8" value="1"> Very Poorly - Cannot cope</input></label>
+                    </div>
+                </div>
+
+                <div class="question-card" data-phase="2" data-question="3">
+                    <h3>3. How would you describe your ability to concentrate and focus?</h3>
+                    <div class="options">
+                        <label><input type="radio" name="q9" value="5"> Excellent - Can focus for long periods</input></label>
+                        <label><input type="radio" name="q9" value="4"> Good - Usually focused</input></label>
+                        <label><input type="radio" name="q9" value="3"> Moderate - Sometimes distracted</input></label>
+                        <label><input type="radio" name="q9" value="2"> Poor - Often distracted</input></label>
+                        <label><input type="radio" name="q9" value="1"> Very Poor - Cannot concentrate</input></label>
+                    </div>
+                </div>
+
+                <div class="question-card" data-phase="2" data-question="4">
+                    <h3>4. How often do you experience anxiety or worry?</h3>
+                    <div class="options">
+                        <label><input type="radio" name="q10" value="5"> Rarely or never</input></label>
+                        <label><input type="radio" name="q10" value="4"> Occasionally</input></label>
+                        <label><input type="radio" name="q10" value="3"> Sometimes (few times a week)</input></label>
+                        <label><input type="radio" name="q10" value="2"> Often (daily)</input></label>
+                        <label><input type="radio" name="q10" value="1"> Constantly</input></label>
+                    </div>
+                </div>
+
+                <div class="question-card" data-phase="2" data-question="5">
+                    <h3>5. How satisfied are you with your social relationships and connections?</h3>
+                    <div class="options">
+                        <label><input type="radio" name="q11" value="5"> Very Satisfied - Strong connections</input></label>
+                        <label><input type="radio" name="q11" value="4"> Satisfied - Good relationships</input></label>
+                        <label><input type="radio" name="q11" value="3"> Neutral - Some connections</input></label>
+                        <label><input type="radio" name="q11" value="2"> Dissatisfied - Limited connections</input></label>
+                        <label><input type="radio" name="q11" value="1"> Very Dissatisfied - Isolated</input></label>
+                    </div>
+                </div>
+
+                <div class="question-card" data-phase="2" data-question="6">
+                    <h3>6. How would you rate your memory and cognitive function?</h3>
+                    <div class="options">
+                        <label><input type="radio" name="q12" value="5"> Excellent - Sharp memory</input></label>
+                        <label><input type="radio" name="q12" value="4"> Good - Usually remember well</input></label>
+                        <label><input type="radio" name="q12" value="3"> Moderate - Sometimes forgetful</input></label>
+                        <label><input type="radio" name="q12" value="2"> Poor - Often forgetful</input></label>
+                        <label><input type="radio" name="q12" value="1"> Very Poor - Significant memory issues</input></label>
+                    </div>
+                </div>
+            </div>
+            <button class="next-btn" onclick="nextPhase(2)">Next: Phase 3</button>
+        </div>
+
+        <!-- Phase 3: Lifestyle & Habits -->
+        <div class="phase hidden" id="phase3">
+            <h2>Phase 3: Lifestyle & Habits</h2>
+            <div class="questions-container">
+                <div class="question-card" data-phase="3" data-question="1">
+                    <h3>1. How would you rate your work-life balance?</h3>
+                    <div class="options">
+                        <label><input type="radio" name="q13" value="5"> Excellent - Well balanced</input></label>
+                        <label><input type="radio" name="q13" value="4"> Good - Mostly balanced</input></label>
+                        <label><input type="radio" name="q13" value="3"> Moderate - Some imbalance</input></label>
+                        <label><input type="radio" name="q13" value="2"> Poor - Often unbalanced</input></label>
+                        <label><input type="radio" name="q13" value="1"> Very Poor - No balance</input></label>
+                    </div>
+                </div>
+
+                <div class="question-card" data-phase="3" data-question="2">
+                    <h3>2. How often do you consume alcohol or use substances?</h3>
+                    <div class="options">
+                        <label><input type="radio" name="q14" value="5"> Never or very rarely</input></label>
+                        <label><input type="radio" name="q14" value="4"> Occasionally (socially)</input></label>
+                        <label><input type="radio" name="q14" value="3"> Weekly (moderate)</input></label>
+                        <label><input type="radio" name="q14" value="2"> Several times per week</input></label>
+                        <label><input type="radio" name="q14" value="1"> Daily or almost daily</input></label>
+                    </div>
+                </div>
+
+                <div class="question-card" data-phase="3" data-question="3">
+                    <h3>3. How much time do you spend on screens (phone, computer, TV) daily?</h3>
+                    <div class="options">
+                        <label><input type="radio" name="q15" value="5"> Less than 4 hours</input></label>
+                        <label><input type="radio" name="q15" value="4"> 4-6 hours</input></label>
+                        <label><input type="radio" name="q15" value="3"> 6-8 hours</input></label>
+                        <label><input type="radio" name="q15" value="2"> 8-10 hours</input></label>
+                        <label><input type="radio" name="q15" value="1"> More than 10 hours</input></label>
+                    </div>
+                </div>
+
+                <div class="question-card" data-phase="3" data-question="4">
+                    <h3>4. How would you rate your hydration habits (water intake)?</h3>
+                    <div class="options">
+                        <label><input type="radio" name="q16" value="5"> Excellent - 8+ glasses daily</input></label>
+                        <label><input type="radio" name="q16" value="4"> Good - 6-8 glasses daily</input></label>
+                        <label><input type="radio" name="q16" value="3"> Moderate - 4-6 glasses daily</input></label>
+                        <label><input type="radio" name="q16" value="2"> Poor - 2-4 glasses daily</input></label>
+                        <label><input type="radio" name="q16" value="1"> Very Poor - Less than 2 glasses</input></label>
+                    </div>
+                </div>
+
+                <div class="question-card" data-phase="3" data-question="5">
+                    <h3>5. How often do you take breaks and practice relaxation techniques?</h3>
+                    <div class="options">
+                        <label><input type="radio" name="q17" value="5"> Daily - Regular relaxation</input></label>
+                        <label><input type="radio" name="q17" value="4"> Several times per week</input></label>
+                        <label><input type="radio" name="q17" value="3"> Weekly</input></label>
+                        <label><input type="radio" name="q17" value="2"> Rarely</input></label>
+                        <label><input type="radio" name="q17" value="1"> Never</input></label>
+                    </div>
+                </div>
+
+                <div class="question-card" data-phase="3" data-question="6">
+                    <h3>6. How would you rate your overall lifestyle habits and routines?</h3>
+                    <div class="options">
+                        <label><input type="radio" name="q18" value="5"> Excellent - Very healthy routines</input></label>
+                        <label><input type="radio" name="q18" value="4"> Good - Mostly healthy</input></label>
+                        <label><input type="radio" name="q18" value="3"> Moderate - Mixed habits</input></label>
+                        <label><input type="radio" name="q18" value="2"> Poor - Unhealthy patterns</input></label>
+                        <label><input type="radio" name="q18" value="1"> Very Poor - No routine</input></label>
+                    </div>
+                </div>
+            </div>
+            <button class="next-btn" onclick="completeAssessment()">View Results</button>
+        </div>
+
+        <!-- Analytics Dashboard -->
+        <div class="analytics-dashboard hidden" id="analytics">
+            <div class="animated-gradient-container" id="animatedGradient"></div>
+            <div class="analytics-content">
+            <h2>Your Health Assessment Results</h2>
+            
+            <div class="score-summary">
+                <div class="score-card">
+                    <h3>Overall Health Score</h3>
+                    <div class="score-value" id="overallScore">0</div>
+                    <div class="score-label" id="overallLabel">Calculating...</div>
+                </div>
+                <div class="score-card">
+                    <h3>Physical Health</h3>
+                    <div class="score-value" id="physicalScore">0</div>
+                    <div class="score-label">/ 30</div>
+                </div>
+                <div class="score-card">
+                    <h3>Mental Health</h3>
+                    <div class="score-value" id="mentalScore">0</div>
+                    <div class="score-label">/ 30</div>
+                </div>
+                <div class="score-card">
+                    <h3>Lifestyle</h3>
+                    <div class="score-value" id="lifestyleScore">0</div>
+                    <div class="score-label">/ 30</div>
+                </div>
+            </div>
+
+            <div class="charts-container">
+                <div class="chart-wrapper">
+                    <h3>Phase Comparison</h3>
+                    <canvas id="phaseChart"></canvas>
+                </div>
+                <div class="chart-wrapper">
+                    <h3>Health Score Distribution</h3>
+                    <canvas id="distributionChart"></canvas>
+                </div>
+                <div class="chart-wrapper">
+                    <h3>Trend Analysis</h3>
+                    <canvas id="trendChart"></canvas>
+                </div>
+            </div>
+
+            <div class="recommendations">
+                <h3>Health Recommendations</h3>
+                <div id="recommendationsList"></div>
+            </div>
+
+            <button class="restart-btn" onclick="restartAssessment()">Start New Assessment</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/staticc/text_script.js"></script>
+</body>
+</html>
+

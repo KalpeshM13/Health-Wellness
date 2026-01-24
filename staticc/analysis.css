@@ -1,0 +1,46 @@
+body {
+  margin: 0;
+  background: #050505;
+  overflow: hidden;
+}
+
+#gradient-container {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.gradient-wrapper {
+  position: absolute;
+  inset: 0;
+}
+
+/* Blur levels */
+.blur-light { filter: blur(40px); }
+.blur-medium { filter: blur(70px); }
+.blur-heavy { filter: blur(100px); }
+
+/* Gradient animation */
+@keyframes blobMove {
+  0% {
+    transform: translate(0,0);
+  }
+  25% {
+    transform: translate(calc(var(--tx1) * 200px), calc(var(--ty1) * 200px));
+  }
+  50% {
+    transform: translate(calc(var(--tx2) * 200px), calc(var(--ty2) * 200px));
+  }
+  75% {
+    transform: translate(calc(var(--tx3) * 200px), calc(var(--ty3) * 200px));
+  }
+  100% {
+    transform: translate(calc(var(--tx4) * 200px), calc(var(--ty4) * 200px));
+  }
+}
+
+.gradient-blob {
+  position: absolute;
+  opacity: 0.3;
+  animation: blobMove linear infinite;
+}
