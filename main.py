@@ -96,6 +96,22 @@ async def counsellor(request: Request):
 async def counsellor(request: Request):
     return templates.TemplateResponse("sad.html", {"request" : request})
 
+@app.get("/templates/anxiety_index.html", response_class=HTMLResponse)
+async def counsellor(request: Request):
+    return templates.TemplateResponse("anxiety_index.html", {"request" : request})
+
+@app.get("/templates/login.html", response_class=HTMLResponse)
+async def counsellor(request: Request):
+    return templates.TemplateResponse("login.html", {"request" : request})
+
+@app.get("/templates/stress.html", response_class=HTMLResponse)
+async def counsellor(request: Request):
+    return templates.TemplateResponse("stress.html", {"request" : request})
+
+@app.get("/templates/signup.html", response_class=HTMLResponse)
+async def counsellor(request: Request):
+    return templates.TemplateResponse("signup.html", {"request" : request})
+
 @app.post("/chat")
 async def output(request: chats):
     reply = resp(request.message)
