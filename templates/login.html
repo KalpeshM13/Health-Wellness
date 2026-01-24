@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #001f3f 0%, #003366 50%, #001a33 100%);
+        }
+
+        .login-container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            max-width: 400px;
+            margin: 20px;
+        }
+
+        .login-header {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .login-header .logo {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #001f3f, #003366);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            box-shadow: 0 4px 15px rgba(0, 31, 63, 0.3);
+        }
+
+        .login-header .logo svg {
+            width: 35px;
+            height: 35px;
+            fill: white;
+        }
+
+        .login-header h1 {
+            color: #001f3f;
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .login-header p {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            color: #001f3f;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid #e1e5e9;
+            border-radius: 10px;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            outline: none;
+        }
+
+        .form-group input:focus {
+            border-color: #003366;
+            box-shadow: 0 0 0 4px rgba(0, 51, 102, 0.1);
+        }
+
+        .form-group input::placeholder {
+            color: #aaa;
+        }
+
+        .form-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            font-size: 14px;
+        }
+
+        .remember-me {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #555;
+            cursor: pointer;
+        }
+
+        .remember-me input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            accent-color: #001f3f;
+            cursor: pointer;
+        }
+
+        .forgot-password {
+            color: #003366;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .forgot-password:hover {
+            color: #001f3f;
+            text-decoration: underline;
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #001f3f, #003366);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 31, 63, 0.3);
+        }
+
+        .login-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 31, 63, 0.4);
+        }
+
+        .login-btn:active {
+            transform: translateY(0);
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            margin: 25px 0;
+            color: #999;
+            font-size: 13px;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: #e1e5e9;
+        }
+
+        .divider span {
+            padding: 0 15px;
+        }
+
+        .social-login {
+            display: flex;
+            gap: 12px;
+        }
+
+        .social-btn {
+            flex: 1;
+            padding: 12px;
+            border: 2px solid #e1e5e9;
+            border-radius: 10px;
+            background: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .social-btn:hover {
+            border-color: #003366;
+            background: #f8f9fa;
+        }
+
+        .social-btn svg {
+            width: 22px;
+            height: 22px;
+        }
+
+        .signup-link {
+            text-align: center;
+            margin-top: 25px;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .signup-link a {
+            color: #003366;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .signup-link a:hover {
+            color: #001f3f;
+            text-decoration: underline;
+        }
+
+        @media (max-width: 480px) {
+            .login-container {
+                padding: 30px 25px;
+            }
+
+            .login-header h1 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-header">
+            <div class="logo">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/>
+                </svg>
+            </div>
+            <h1>Welcome Back</h1>
+            <p>Please sign in to your account</p>
+        </div>
+
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password" required>
+            </div>
+
+            <div class="form-options">
+                <label class="remember-me">
+                    <input type="checkbox" name="remember">
+                    <span>Remember me</span>
+                </label>
+                <a href="#" class="forgot-password">Forgot Password?</a>
+            </div>
+
+            <button type="submit" class="login-btn">Sign In</button>
+        </form>
+
+        <div class="signup-link">
+            Don't have an account? <a href="signup.html">Sign Up</a>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            // Add your login logic here
+            console.log('Login attempt:', { email, password });
+            
+            // Example: Show success message
+            alert('Login functionality would be implemented here!');
+        });
+    </script>
+</body>
+</html>

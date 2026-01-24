@@ -11,14 +11,11 @@ let assessmentData = {
     }
 };
 
-// Chart instances
 let phaseChart = null;
 let distributionChart = null;
 let trendChart = null;
 
-// Initialize real-time updates
 document.addEventListener('DOMContentLoaded', function() {
-    // Add event listeners to all radio buttons for real-time updates
     const allRadios = document.querySelectorAll('input[type="radio"]');
     allRadios.forEach(radio => {
         radio.addEventListener('change', function() {
@@ -150,20 +147,15 @@ function completeAssessment() {
         assessmentData.scores.mental + 
         assessmentData.scores.lifestyle;
     
-    // Hide phase 3 and show analytics
     document.getElementById('phase3').classList.add('hidden');
     document.getElementById('analytics').classList.remove('hidden');
     
-    // Initialize animated gradient
     initializeAnimatedGradient();
     
-    // Update scores display
     displayScores();
     
-    // Generate charts
     generateCharts();
     
-    // Generate recommendations
     generateRecommendations();
 }
 
