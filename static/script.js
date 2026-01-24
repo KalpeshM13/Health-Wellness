@@ -235,72 +235,86 @@ if (carouselItems.length > 0) {
 }
 
 
-const chatbotIcon = document.getElementById('chatbotIcon');
-const chatModal = document.getElementById('chatModal');
-const closeBtn = document.getElementById('closeChat');
-const userInput = document.getElementById('userInput');
-const chatBox = document.getElementById('chatBox');
-const sendBtn = document.getElementById('sendBtn');
+// Chatbot functionality - wrapped in DOMContentLoaded
+document.addEventListener('DOMContentLoaded', () => {
+    const chatbotIcon = document.getElementById('chatbotIcon');
+    const chatModal = document.getElementById('chatModal');
+    const closeBtn = document.getElementById('closeChat');
+    const userInput = document.getElementById('userInput');
+    const chatBox = document.getElementById('chatBox');
+    const sendBtn = document.getElementById('sendBtn');
 
-
-chatbotIcon.addEventListener('click', () => {
-    chatModal.classList.toggle('active');
-    if (chatModal.classList.contains('active')) {
-        userInput.focus();
+    // Check if elements exist
+    if (!chatbotIcon || !chatModal || !userInput || !chatBox) {
+        console.error('Chatbot elements not found');
+        return;
     }
-});
 
-
-closeBtn.addEventListener('click', () => {
-    chatModal.classList.remove('active');
-});
-
-
-document.addEventListener('click', (e) => {
-    if (!chatbotIcon.contains(e.target) && !chatModal.contains(e.target)) {
-        chatModal.classList.remove('active');
-    }
-});
-
-
-function sendMessage() {
-    const message = userInput.value.trim();
-    if (message === "") return;
-
-    
-    addMessage(message, "user-message");
-    userInput.value = "";
-
-   
-    fetch("/chat", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ message: message })
-    })
-    .then(response => response.json())
-    .then(data => {
-        addMessage(data.response, "bot-message");
-    })
-    .catch(error => {
-        console.error("Error:", error);
-        addMessage("Sorry, I encountered an error. Please try again.", "bot-message");
+    // Toggle modal on icon click
+    chatbotIcon.addEventListener('click', () => {
+        chatModal.classList.toggle('active');
+        if (chatModal.classList.contains('active')) {
+            userInput.focus();
+        }
     });
-}
 
-// Add message to chat
-function addMessage(text, className) {
-    const msgDiv = document.createElement("div");
-    msgDiv.className = className;
-    msgDiv.textContent = text;
-    chatBox.appendChild(msgDiv);
-    chatBox.scrollTop = chatBox.scrollHeight;
-}
-
-// Send message on Enter key
-userInput.addEventListener('keypress', (e) => {
-    if (e.key === 'Enter') {
-        sendMessage();
+    // Close modal on close button
+    if (closeBtn) {
+        closeBtn.addEventListener('click', () => {
+            chatModal.classList.remove('active');
+        });
     }
+
+    // Close modal when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!chatbotIcon.contains(e.target) && !chatModal.contains(e.target)) {
+            chatModal.classList.remove('active');
+        }
+    });
+
+    // Send message function
+    function sendMessage() {
+        const message = userInput.value.trim();
+        if (message === "") return;
+
+        // Add user message to chat
+        addMessage(message, "user-message");
+        userInput.value = "";
+
+        // Send API request
+        fetch("/chat", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ message: message })
+        })
+        .then(response => response.json())
+        .then(data => {
+            addMessage(data.response, "bot-message");
+        })
+        .catch(error => {
+            console.error("Error:", error);
+            addMessage("Sorry, I encountered an error. Please try again.", "bot-message");
+        });
+    }
+
+    // Add message to chat
+    function addMessage(text, className) {
+        const msgDiv = document.createElement("div");
+        msgDiv.className = className;
+        msgDiv.textContent = text;
+        chatBox.appendChild(msgDiv);
+        chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
+    // Send message on Enter key
+    userInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            sendMessage();
+        }
+    });
+
+    // Expose sendMessage to window for onclick handler
+    window.sendMessage = sendMessage;
 });
