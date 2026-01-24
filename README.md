@@ -7,5 +7,5 @@ pip uvicorn install pydantic fastapi python-dotenv jinja2 groq
 
 ### Then run this command in terminal 
 ```
-uvicorn main:app --reload
+uvicorn main:app --host 0.0.0.0 --port 10000
 ```
