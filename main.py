@@ -66,7 +66,7 @@ def resp(user_msg):
 
 @app.get("/home", response_class=HTMLResponse)
 async def info(request : Request):
-    return templates.TemplateResponse("idx.html", {"request" : request})
+    return templates.TemplateResponse("index.html", {"request" : request})
  
 @app.post("/chat")
 async def output(request: chats):
