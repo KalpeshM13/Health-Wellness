@@ -81,49 +81,22 @@ def resp(user_msg):
     return chat_comp.choices[0].message.content
 
 @app.get("/", response_class=HTMLResponse)
-async def root(request: Request):
-    """Landing page - Entry point"""
-    return templates.TemplateResponse("index.html", {"request": request})
+async def info(request : Request):
+    return templates.TemplateResponse("index.html", {"request" : request})
 
-@app.get("/index", response_class=HTMLResponse)
-async def index(request: Request):
-    """Index page"""
-    return templates.TemplateResponse("index.html", {"request": request})
+@app.get("/templates/test_index.html", response_class=HTMLResponse)
+async def test(request: Request):
+    return templates.TemplateResponse("test_index.html", {"request" : request})
 
-@app.get("/assessment", response_class=HTMLResponse)
-async def assessment(request: Request):
-    """Assessment page"""
-    return templates.TemplateResponse("assessment.html", {"request": request})
-
-@app.get("/login", response_class=HTMLResponse)
-async def login(request: Request):
-    """Login page"""
-    return templates.TemplateResponse("login.html", {"request": request})
-
-@app.get("/signup", response_class=HTMLResponse)
-async def signup(request: Request):
-    """Signup page"""
-    return templates.TemplateResponse("signup.html", {"request": request})
-
-@app.get("/home", response_class=HTMLResponse)
-async def home(request: Request):
-    """Main dashboard - After login"""
-    return templates.TemplateResponse("index.html", {"request": request})
-
-@app.get("/counsellor", response_class=HTMLResponse)
+@app.get("/templates/counsellor.html", response_class=HTMLResponse)
 async def counsellor(request: Request):
-    """Counsellor page"""
-    return templates.TemplateResponse("counsellor.html", {"request": request})
+    return templates.TemplateResponse("counsellor.html", {"request" : request})
 
-@app.get("/sadness", response_class=HTMLResponse)
-async def sadness(request: Request):
-    """Sadness support page"""
-    return templates.TemplateResponse("sad.html", {"request": request})
+@app.get("/templates/sad.html", response_class=HTMLResponse)
+async def counsellor(request: Request):
+    return templates.TemplateResponse("sad.html", {"request" : request})
 
-@app.get("/anxiety", response_class=HTMLResponse)
-async def anxiety(request: Request):
-    """Anxiety support page"""
-    return templates.TemplateResponse("anxiety_index.html", {"request": request})
+@app.get("/templates/anxiety_index.html", response_class=HTMLResponse)
 async def counsellor(request: Request):
     return templates.TemplateResponse("anxiety_index.html", {"request" : request})
 
