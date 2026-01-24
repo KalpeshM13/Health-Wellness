@@ -485,18 +485,26 @@
             justify-content: center;
             font-size: 1.5rem;
             font-weight: 500;
-            animation: breathe 8s infinite ease-in-out;
+            animation: breathe 19s infinite ease-in-out;
             box-shadow: 0 0 60px rgba(102, 126, 234, 0.4);
         }
 
         @keyframes breathe {
-            0%, 100% {
+            0% {
                 transform: scale(1);
                 box-shadow: 0 0 60px rgba(102, 126, 234, 0.4);
             }
-            50% {
+            21% {
                 transform: scale(1.3);
                 box-shadow: 0 0 100px rgba(102, 126, 234, 0.6);
+            }
+            58% {
+                transform: scale(1.3);
+                box-shadow: 0 0 100px rgba(102, 126, 234, 0.6);
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 60px rgba(102, 126, 234, 0.4);
             }
         }
 
@@ -891,7 +899,7 @@
             <span id="breathText">Breathe In</span>
         </div>
         
-        <p class="breathing-instructions">Inhale as the circle expands, exhale as it contracts. Repeat for 3-5 minutes.</p>
+        <p class="breathing-instructions">Inhale (4 sec) → Hold (7 sec) → Exhale (8 sec). Repeat for 3-5 minutes.</p>
         <button class="breathing-btn" onclick="toggleBreathing()">
             <i class="fas fa-pause" id="breathingIcon"></i> <span id="breathingBtnText">Pause Exercise</span>
         </button>
@@ -989,22 +997,33 @@
             });
         });
 
-        // Breathing Exercise
+        // Breathing Exercise - 4 sec in, 7 sec hold, 8 sec out
         let breathingActive = true;
-        const breathTexts = ['Breathe In', 'Hold', 'Breathe Out', 'Hold'];
+        const breathingCycle = [
+            { text: 'Breathe In', duration: 4 },
+            { text: 'Hold', duration: 7 },
+            { text: 'Breathe Out', duration: 8 }
+        ];
         let breathIndex = 0;
+        let breathTimer = null;
 
         function updateBreathText() {
             if (!breathingActive) return;
             
             const breathText = document.getElementById('breathText');
-            const circle = document.getElementById('breathingCircle');
+            const cycle = breathingCycle[breathIndex];
             
-            breathText.textContent = breathTexts[breathIndex];
-            breathIndex = (breathIndex + 1) % breathTexts.length;
+            breathText.textContent = cycle.text;
+            
+            // Move to next phase after its duration
+            breathTimer = setTimeout(() => {
+                breathIndex = (breathIndex + 1) % breathingCycle.length;
+                updateBreathText();
+            }, cycle.duration * 1000);
         }
 
-        setInterval(updateBreathText, 2000);
+        // Start the breathing cycle
+        updateBreathText();
 
         function toggleBreathing() {
             breathingActive = !breathingActive;
@@ -1016,10 +1035,14 @@
                 circle.style.animationPlayState = 'running';
                 icon.className = 'fas fa-pause';
                 btnText.textContent = 'Pause Exercise';
+                // Resume the breathing cycle
+                updateBreathText();
             } else {
                 circle.style.animationPlayState = 'paused';
                 icon.className = 'fas fa-play';
                 btnText.textContent = 'Resume Exercise';
+                // Clear the timer when paused
+                if (breathTimer) clearTimeout(breathTimer);
             }
         }
 
