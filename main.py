@@ -92,6 +92,10 @@ async def test(request: Request):
 async def counsellor(request: Request):
     return templates.TemplateResponse("counsellor.html", {"request" : request})
 
+@app.get("/templates/sad.html", response_class=HTMLResponse)
+async def counsellor(request: Request):
+    return templates.TemplateResponse("sad.html", {"request" : request})
+
 @app.post("/chat")
 async def output(request: chats):
     reply = resp(request.message)
