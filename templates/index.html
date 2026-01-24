@@ -285,6 +285,26 @@
         </div>
     </footer>
 
+    <!-- Floating Chatbot Icon -->
+    <div class="chatbot-icon" id="chatbotIcon">
+        <i class="fas fa-comments"></i>
+    </div>
+
+    <!-- Chat Modal -->
+    <div class="chat-modal" id="chatModal">
+        <div class="chat-modal-header">
+            <h3>Mental Wellness Bot</h3>
+            <button class="close-btn" id="closeChat">&times;</button>
+        </div>
+        <div class="chat-modal-body" id="chatBox">
+            <div class="bot-message">Hello! How can I help you today?</div>
+        </div>
+        <div class="chat-modal-footer">
+            <input type="text" id="userInput" placeholder="Type your message...">
+            <button id="sendBtn" onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
     <script src="/static/script.js"></script>
 </body>
 

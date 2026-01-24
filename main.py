@@ -83,7 +83,15 @@ def resp(user_msg):
 @app.get("/home", response_class=HTMLResponse)
 async def info(request : Request):
     return templates.TemplateResponse("index.html", {"request" : request})
- 
+
+@app.get("/templates/test_index.html", response_class=HTMLResponse)
+async def test(request: Request):
+    return templates.TemplateResponse("test_index.html", {"request" : request})
+
+@app.get("/templates/counsellor.html", response_class=HTMLResponse)
+async def counsellor(request: Request):
+    return templates.TemplateResponse("counsellor.html", {"request" : request})
+
 @app.post("/chat")
 async def output(request: chats):
     reply = resp(request.message)
