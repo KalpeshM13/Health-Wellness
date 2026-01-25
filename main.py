@@ -8,7 +8,7 @@ from fastapi.templating import Jinja2Templates
 from fastapi.middleware.cors import CORSMiddleware
 from groq import Groq
 
-load_dotenv()
+# load_dotenv()
 
 app = FastAPI()
 
@@ -20,7 +20,7 @@ class chats(BaseModel):
     message: str
 
 client = Groq(
-    api_key = os.environ.get("GROQ_API_KEY")
+    api_key = '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'
 )
 
 app.add_middleware(

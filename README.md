@@ -1,11 +1,17 @@
 # To run python file 
 
+### Run following commands in terminal
+```
+python -m venv venv
+```
+```
+./venv/Scripts/Activate.ps1
+```
 ### Install required extensions
 ```
-pip uvicorn install pydantic fastapi python-dotenv jinja2 groq firebase-admin
+pip install -r requirements.txt
 ```
-
 ### Then run this command in terminal 
 ```
-uvicorn main:app --host 0.0.0.0 --port 10000
+uvicorn main:app --reload
 ```
