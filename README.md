@@ -2,7 +2,7 @@
 
 ### Install required extensions
 ```
-pip uvicorn install pydantic fastapi python-dotenv jinja2 groq
+pip uvicorn install pydantic fastapi python-dotenv jinja2 groq firebase-admin
 ```
 
 ### Then run this command in terminal 

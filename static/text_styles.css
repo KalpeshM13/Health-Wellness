@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -8,12 +10,12 @@ html, body {
     height: 100%;
     width: 100%;
     overflow: hidden;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'DM Sans', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: #333;
 }
 
 body {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #1e3a5f 0%, #0f2744 100%);
     background-attachment: fixed;
     background-size: cover;
     background-position: center;
@@ -34,7 +36,7 @@ body {
 }
 
 header {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #1e3a5f 0%, #0f2744 100%);
     color: white;
     padding: 25px 30px;
     text-align: center;
@@ -61,7 +63,7 @@ header h1 {
 
 .progress-bar {
     height: 8px;
-    background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(90deg, #1e3a5f 0%, #0f2744 100%);
     border-radius: 10px;
     transition: width 0.5s ease;
     width: 33.33%;
@@ -70,7 +72,7 @@ header h1 {
 .progress-text {
     margin-top: 10px;
     font-weight: 600;
-    color: #667eea;
+    color: #1e3a5f;
     text-align: center;
 }
 
@@ -86,7 +88,7 @@ header h1 {
 }
 
 .phase h2 {
-    color: #667eea;
+    color: #1e3a5f;
     margin-bottom: 20px;
     font-size: 1.8em;
     text-align: center;
@@ -102,14 +104,14 @@ header h1 {
     background: #f8f9fa;
     border-radius: 15px;
     padding: 20px;
-    border-left: 5px solid #667eea;
+    border-left: 5px solid #1e3a5f;
     transition: transform 0.2s, box-shadow 0.2s;
     flex-shrink: 0;
 }
 
 .question-card:hover {
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.2);
+    box-shadow: 0 5px 15px rgba(15, 23, 42, 0.08);
 }
 
 .question-card h3 {
@@ -138,7 +140,7 @@ header h1 {
 
 .options label:hover {
     background: #e8eaf6;
-    border-color: #667eea;
+    border-color: #1e3a5f;
 }
 
 .options input[type="radio"] {
@@ -146,11 +148,11 @@ header h1 {
     width: 20px;
     height: 20px;
     cursor: pointer;
-    accent-color: #667eea;
+    accent-color: #1e3a5f;
 }
 
 .next-btn, .restart-btn {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #1e3a5f 0%, #0f2744 100%);
     color: white;
     border: none;
     padding: 12px 35px;
@@ -171,7 +173,7 @@ header h1 {
 
 .next-btn:hover, .restart-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+    box-shadow: 0 10px 25px rgba(15, 23, 42, 0.12);
 }
 
 .next-btn:active, .restart-btn:active {
@@ -252,7 +254,7 @@ header h1 {
 }
 
 .analytics-dashboard h2 {
-    color: #667eea;
+    color: #1e3a5f;
     text-align: center;
     margin-bottom: 20px;
     font-size: 1.8em;
@@ -270,12 +272,12 @@ header h1 {
 }
 
 .score-card {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #1e3a5f 0%, #0f2744 100%);
     color: white;
     padding: 20px;
     border-radius: 15px;
     text-align: center;
-    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+    box-shadow: 0 5px 15px rgba(15, 23, 42, 0.08);
     position: relative;
     z-index: 1;
 }
@@ -317,7 +319,7 @@ header h1 {
 }
 
 .chart-wrapper h3 {
-    color: #667eea;
+    color: #1e3a5f;
     margin-bottom: 15px;
     text-align: center;
     font-size: 1.1em;
@@ -337,7 +339,7 @@ header h1 {
 }
 
 .recommendations h3 {
-    color: #667eea;
+    color: #1e3a5f;
     margin-bottom: 15px;
     font-size: 1.3em;
 }
@@ -352,12 +354,12 @@ header h1 {
     background: white;
     padding: 15px 20px;
     border-radius: 10px;
-    border-left: 4px solid #667eea;
+    border-left: 4px solid #1e3a5f;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
 .recommendation-item strong {
-    color: #667eea;
+    color: #1e3a5f;
     display: block;
     margin-bottom: 5px;
 }
