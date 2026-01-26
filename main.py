@@ -20,7 +20,7 @@ class chats(BaseModel):
     message: str
 
 client = Groq(
-    api_key = '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' # Paste Your Groq API Key Here
+    api_key = 'Groq_API_Key' # Paste Your Groq API Key Here
 )
 
 app.add_middleware(
