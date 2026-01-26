@@ -1,19 +1,65 @@
-### Video Demo
-[Link](https://www.youtu.be/6VxLeJ7znPE)
+# Health-Wellness
 
-# To run python file 
-### Run following commands in terminal
+**Introduction**
+
+Health-Wellness is a small FastAPI web application that provides a compassionate, conversational mental health counsellor interface. The app serves static front-end pages from the `templates` and `static` folders and uses a Groq-driven chat completion in `main.py` to generate empathetic responses.
+
+**Features**
+- **Empathetic chat**: A simple counsellor-style chat powered by the Groq client.
+- **Multiple pages**: Prebuilt templates for stress, anxiety, sadness, and more.
+- **Static assets**: CSS and JS under the `static` folder for the front-end.
+
+**Prerequisites**
+- Python 3.10 or later
+- Git (optional, to clone the repo)
+
+**Quick Setup (Windows)**
+1. Clone the repo (or unzip/copy the project folder):
+
+```powershell
+git clone <repo-url>
+cd "Health-Wellness"
 ```
+
+2. Create and activate a virtual environment:
+
+```powershell
 python -m venv venv
+.\\venv\\Scripts\\Activate.ps1   # PowerShell
 ```
+
+If using Command Prompt:
+
+```cmd
+venv\\Scripts\\activate
 ```
-./venv/Scripts/Activate.ps1
-```
-### Install required extensions
-```
+
+3. Install dependencies:
+
+```powershell
 pip install -r requirements.txt
 ```
-### Then run this command in terminal 
-```
+
+**Environment / API Key**
+- This project uses the `groq` client in `main.py`. The current code contains an inline `api_key` value. For security, it's recommended you:
+	- Create a `.env` file with your API key (e.g., `GROQ_API_KEY=your_key_here`) and enable loading it in `main.py` by uncommenting `load_dotenv()` and reading the value from `os.getenv('GROQ_API_KEY')`.
+	- Or replace the inline key in `main.py` with your own key before running locally.
+
+**Run the app**
+
+```powershell
 uvicorn main:app --reload
 ```
+
+Open your browser at: http://127.0.0.1:8000
+
+**Project layout (important files)**
+- **App entry**: [main.py](main.py)
+- **Templates**: [templates](templates)
+- **Static assets**: [static](static)
+- **Dependencies**: [requirements.txt](requirements.txt)
+
+**Notes & Security**
+- Do not commit or publish your API keys. Prefer environment variables or a secret manager.
+
+---
