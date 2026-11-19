@@ -41,9 +41,13 @@ pip install -r requirements.txt
 ```
 
 **Environment / API Key**
-- This project uses the `groq` client in `main.py`. The current code contains an inline `api_key` value. For security, it's recommended you:
-	- Create a `.env` file with your API key (e.g., `GROQ_API_KEY=your_key_here`) and enable loading it in `main.py` by uncommenting `load_dotenv()` and reading the value from `os.getenv('GROQ_API_KEY')`.
-	- Or replace the inline key in `main.py` with your own key before running locally.
+- Create a `.env` file in the project root:
+
+```dotenv
+GROQ_API_KEY=your_groq_api_key
+```
+
+- `main.py` loads this value through `python-dotenv`. Do not commit `.env`; it is excluded by `.gitignore`.
 
 **Run the app**
 

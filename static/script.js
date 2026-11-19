@@ -178,9 +178,6 @@ sectionHeaders.forEach(header => {
     headerObserver.observe(header);
 });
 
-console.log('MindBloom website loaded successfully!');
-
-
 const carouselItems = document.querySelectorAll('.story-item');
 if (carouselItems.length > 0) {
     let currentIndex = 0;
@@ -246,7 +243,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Check if elements exist
     if (!chatbotIcon || !chatModal || !userInput || !chatBox) {
-        console.error('Chatbot elements not found');
         return;
     }
 
@@ -289,12 +285,16 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             body: JSON.stringify({ message: message })
         })
-        .then(response => response.json())
-        .then(data => {
-            addMessage(data.response, "bot-message");
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`Chat request failed (${response.status})`);
+            }
+            return response.json();
         })
-        .catch(error => {
-            console.error("Error:", error);
+        .then(data => {
+            addMessage(data.response || "I could not generate a response. Please try again.", "bot-message");
+        })
+        .catch(() => {
             addMessage("Sorry, I encountered an error. Please try again.", "bot-message");
         });
     }

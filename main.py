@@ -8,7 +8,7 @@ from fastapi.templating import Jinja2Templates
 from fastapi.middleware.cors import CORSMiddleware
 from groq import Groq
 
-# load_dotenv()
+load_dotenv()
 
 app = FastAPI()
 
@@ -19,9 +19,11 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 class chats(BaseModel):
     message: str
 
-client = Groq(
-    api_key = 'Groq_API_Key' # Paste Your Groq API Key Here
-)
+groq_api_key = os.getenv("GROQ_API_KEY")
+if not groq_api_key:
+    raise RuntimeError("GROQ_API_KEY is not configured. Add it to the .env file.")
+
+client = Groq(api_key=groq_api_key)
 
 app.add_middleware(
     CORSMiddleware,
@@ -49,6 +51,8 @@ Guidelines:
   "I'm glad you shared this with me."
   "It's okay to feel this way."
 - Keep responses short to medium length.
+- Keep responses focused on the user's feelings and experiences.
+- Keep responses related to indian nature first. Give answers like user is in India.
 - Avoid bullet points unless the user asks for exercises.
 - If user seems distressed, prioritize emotional support over solutions.
 - Never claim to replace a real therapist.
@@ -82,35 +86,35 @@ def resp(user_msg):
 
 @app.get("/", response_class=HTMLResponse)
 async def info(request : Request):
-    return templates.TemplateResponse("index.html", {"request" : request})
+    return templates.TemplateResponse(request=request, name="index.html")
 
 @app.get("/templates/test_index.html", response_class=HTMLResponse)
 async def test(request: Request):
-    return templates.TemplateResponse("test_index.html", {"request" : request})
+    return templates.TemplateResponse(request=request, name="test_index.html")
 
 @app.get("/templates/counsellor.html", response_class=HTMLResponse)
 async def counsellor(request: Request):
-    return templates.TemplateResponse("counsellor.html", {"request" : request})
+    return templates.TemplateResponse(request=request, name="counsellor.html")
 
 @app.get("/templates/sad.html", response_class=HTMLResponse)
 async def counsellor(request: Request):
-    return templates.TemplateResponse("sad.html", {"request" : request})
+    return templates.TemplateResponse(request=request, name="sad.html")
 
 @app.get("/templates/anxiety_index.html", response_class=HTMLResponse)
 async def counsellor(request: Request):
-    return templates.TemplateResponse("anxiety_index.html", {"request" : request})
+    return templates.TemplateResponse(request=request, name="anxiety_index.html")
 
 @app.get("/templates/login.html", response_class=HTMLResponse)
 async def counsellor(request: Request):
-    return templates.TemplateResponse("login.html", {"request" : request})
+    return templates.TemplateResponse(request=request, name="login.html")
 
 @app.get("/templates/stress.html", response_class=HTMLResponse)
 async def counsellor(request: Request):
-    return templates.TemplateResponse("stress.html", {"request" : request})
+    return templates.TemplateResponse(request=request, name="stress.html")
 
 @app.get("/templates/signup.html", response_class=HTMLResponse)
 async def counsellor(request: Request):
-    return templates.TemplateResponse("signup.html", {"request" : request})
+    return templates.TemplateResponse(request=request, name="signup.html")
 
 @app.post("/chat")
 async def output(request: chats):
